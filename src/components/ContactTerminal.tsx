@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, FileText, Phone, Terminal } from 'lucide-react';
+import { Mail, Copy, Check, Send, FileText, Terminal, Shield, MessageSquare } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';
@@ -35,36 +35,36 @@ export const ContactTerminal: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">
             <Terminal className="w-3.5 h-3.5" />
-            <span>Direct Signal & Contact</span>
+            <span>Direct Channels</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Let's Build Something Impactful
+            Connect & Collaborate
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-300">
-            Whether you are building next-generation Speech AI, scaling low-latency systems, or exploring engineering opportunities, my inbox is always open.
+            Open to senior applied AI engineering opportunities, speech systems advisory, and technical collaboration.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Quick Connect Card & Monospace Spec */}
+          {/* Left Column: Direct Channels & Verified Badges */}
           <div className="lg:col-span-5 flex flex-col gap-5">
             <div className="glass-panel rounded-2xl p-6 sm:p-7 border border-white/10 flex flex-col gap-6">
               <div>
-                <h3 className="text-lg font-bold text-white mb-1">Direct Channels</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Direct Communication</h3>
                 <p className="text-xs text-slate-400 font-mono">
                   Guaranteed response within 24 hours.
                 </p>
               </div>
 
-              {/* Copy Email Box */}
+              {/* Copy Email Box with Privacy Protection */}
               <div className="p-4 rounded-xl bg-carbon-900 border border-white/10 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3 overflow-hidden">
-                  <div className="p-2 rounded-lg bg-carbon-850 text-cyan-400">
+                  <div className="p-2.5 rounded-lg bg-carbon-850 text-cyan-400">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div className="flex flex-col truncate">
-                    <span className="text-[10px] uppercase font-mono text-slate-500">Email Address</span>
+                    <span className="text-[10px] uppercase font-mono text-slate-500">Verified Email</span>
                     <span className="text-xs sm:text-sm font-mono text-white font-medium truncate">
                       {PERSONAL_INFO.email}
                     </span>
@@ -74,7 +74,7 @@ export const ContactTerminal: React.FC = () => {
                 <button
                   onClick={copyEmail}
                   className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-medium transition-all"
-                  title="Copy to Clipboard"
+                  title="Copy verified email"
                 >
                   {copied ? (
                     <>
@@ -90,11 +90,11 @@ export const ContactTerminal: React.FC = () => {
                 </button>
               </div>
 
-              {/* Phone & Location Info */}
+              {/* Professional Status Signals (No Personal Phone Expose) */}
               <div className="space-y-3 font-mono text-xs">
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-carbon-900/60 border border-white/5 text-slate-300">
-                  <Phone className="w-4 h-4 text-emerald-400" />
-                  <span>{PERSONAL_INFO.phone}</span>
+                  <Shield className="w-4 h-4 text-emerald-400" />
+                  <span>Privacy-hardened direct communication channel</span>
                 </div>
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-carbon-900/60 border border-white/5 text-slate-300">
                   <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
@@ -132,13 +132,13 @@ export const ContactTerminal: React.FC = () => {
                   className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/35 text-xs font-mono text-cyan-300 transition-all"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>1-Page PDF</span>
+                  <span>1-Page PDF Resume</span>
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Interactive Dispatch Terminal */}
+          {/* Right Column: Clean Dispatch Terminal */}
           <div className="lg:col-span-7">
             <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-white/10">
               <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
@@ -146,36 +146,38 @@ export const ContactTerminal: React.FC = () => {
                   <div className="w-3 h-3 rounded-full bg-rose-500/80" />
                   <div className="w-3 h-3 rounded-full bg-amber-500/80" />
                   <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                  <span className="font-mono text-xs text-slate-400 ml-2">sys_dispatch_message.sh</span>
+                  <span className="font-mono text-xs text-slate-400 ml-2">direct_dispatch.sh</span>
                 </div>
-                <span className="font-mono text-[11px] text-cyan-400">READY</span>
+                <span className="font-mono text-[11px] text-emerald-400 flex items-center gap-1">
+                  <MessageSquare className="w-3 h-3" /> SECURE DISPATCH
+                </span>
               </div>
 
               <form onSubmit={handleSendMail} className="space-y-4">
                 <div>
                   <label className="block text-xs font-mono uppercase text-slate-400 mb-1.5">
-                    Subject / Discussion Topic
+                    Subject / Discussion Scope
                   </label>
                   <input
                     type="text"
                     required
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    placeholder="e.g. AI Engineering Role / Speech AI Collaboration"
+                    placeholder="e.g. AI Engineering Opportunity / Speech AI Advisory"
                     className="w-full px-4 py-2.5 rounded-xl bg-carbon-950 border border-white/10 focus:border-cyan-400 focus:outline-none text-sm text-white font-mono placeholder:text-slate-600 transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-mono uppercase text-slate-400 mb-1.5">
-                    Message Details
+                    Message
                   </label>
                   <textarea
                     rows={4}
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Tell me about your team, challenge, or project..."
+                    placeholder="Briefly describe your team, technical problem, or role scope..."
                     className="w-full px-4 py-2.5 rounded-xl bg-carbon-950 border border-white/10 focus:border-cyan-400 focus:outline-none text-sm text-white font-mono placeholder:text-slate-600 transition-all"
                   />
                 </div>

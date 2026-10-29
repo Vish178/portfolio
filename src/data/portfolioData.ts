@@ -38,6 +38,17 @@ export interface S2STStage {
   status: string;
 }
 
+export interface CaseStudy {
+  id: string;
+  tag: string;
+  title: string;
+  summary: string;
+  problem: string;
+  constraints: string[];
+  tradeoffs: { choice: string; why: string; rejectedAlternative: string }[];
+  impact: string[];
+}
+
 export const PERSONAL_INFO = {
   name: "Vishal Kaushal",
   role: "Applied AI & Speech Systems Engineer",
@@ -45,7 +56,6 @@ export const PERSONAL_INFO = {
   location: "Pune, India (UTC+5:30)",
   availability: "Available for high-impact AI Engineering roles",
   email: "kaushalvishal83@gmail.com",
-  phone: "+91-8208419263",
   avatarUrl: "https://github.com/Vish178.png",
   github: "https://github.com/Vish178",
   linkedin: "https://www.linkedin.com/in/vishal-kaushal-ml/",
@@ -57,27 +67,27 @@ export const CORE_METRICS: MetricItem[] = [
     id: "ram-cut",
     value: "74% Peak RAM Cut",
     label: "Memory Footprint",
-    subtext: "1.9 GB → 0.49 GB on 21-min audio processing chunks, eliminating OOM crashes",
+    subtext: "1.9 GB → 0.49 GB on 21-min audio processing chunks, eliminating container OOMs",
     iconName: "Cpu"
   },
   {
     id: "flac-storage",
     value: "95% Disk Savings",
-    label: "Audio Storage Footprint",
-    subtext: "Master asset standardization to lossless FLAC with on-demand transcode delivery",
+    label: "Storage Architecture",
+    subtext: "Lossless FLAC master standard with JIT transcode delivery, preserving 100% audio fidelity",
     iconName: "HardDrive"
   },
   {
     id: "webrtc-latency",
     value: "< 500ms End-to-End",
-    label: "Full-Duplex Voice Latency",
-    subtext: "Sub-500ms WebRTC pipeline with instant Silero VAD mid-sentence barge-in",
+    label: "Conversational Latency",
+    subtext: "Full-duplex WebRTC audio loop with real-time Silero VAD mid-sentence barge-in",
     iconName: "Zap"
   },
   {
     id: "agent-loops",
     value: "12 Concurrent Loops",
-    label: "Autonomous Background Workers",
+    label: "Autonomous Background Loops",
     subtext: "High-throughput asynchronous lead enrichment, warmth scoring, and multi-channel outreach",
     iconName: "Activity"
   },
@@ -110,7 +120,7 @@ export const S2ST_PIPELINE: S2STStage[] = [
   {
     step: "03",
     title: "Context-Aware Translation",
-    model: "Gemini / Claude with Dynamic Glosssary",
+    model: "Gemini / Claude with Dynamic Glossary",
     description: "Translates dialogue into target languages preserving cultural nuances, character constraints, and syllable timing.",
     metric: "Isomorphic length matching",
     status: "Syntactic Engine"
@@ -133,11 +143,101 @@ export const S2ST_PIPELINE: S2STStage[] = [
   }
 ];
 
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    id: "audio-memory-streaming",
+    tag: "Systems Performance & Memory Profiling",
+    title: "Eliminating Out-of-Memory Failures in Long-Form Audio AI",
+    summary: "Refactored monolithic in-memory audio buffers into generator-driven streaming chunks, cutting container peak RAM from 1.9 GB to 0.49 GB.",
+    problem: "When processing 20+ minute media episodes through transcription and neural dubbing pipelines, loading entire uncompressed WAV arrays into memory led to recurring memory fragmentation and Out-of-Memory (OOM) crashes on 2 GB AWS App Runner container instances.",
+    constraints: [
+      "Target execution environment: 2 GB RAM max per container",
+      "Must preserve millisecond-precise subtitle alignment timestamps",
+      "Zero audio fidelity loss permitted for acoustic downstream mastering"
+    ],
+    tradeoffs: [
+      {
+        choice: "Chunked Stream Pipeline via ffmpeg/ffprobe",
+        why: "Streams 30-second temporal windows with rolling boundary overlap, bounding RAM consumption to under 500 MB regardless of total episode duration.",
+        rejectedAlternative: "Upgrading container instance sizing (rejected due to 4x cloud billing multiplier with unaddressed memory leaks)."
+      },
+      {
+        choice: "Lossless FLAC Master Standardization",
+        why: "Preserves identical 24-bit 48kHz audio quality while saving 95% disk space compared to WAV, performing JIT transcode to MP3 only on download.",
+        rejectedAlternative: "Lossy MP3 compression (rejected because multi-pass neural voice cloning degraded with pre-compressed audio)."
+      }
+    ],
+    impact: [
+      "74% reduction in peak RAM footprint (1.9 GB → 0.49 GB)",
+      "95% cloud audio storage cost reduction across thousands of generated dialogue stems",
+      "Zero OOM failures recorded across production dubbing runs"
+    ]
+  },
+  {
+    id: "full-duplex-voice-agent",
+    tag: "Real-Time Systems & Audio Telemetry",
+    title: "Engineering Sub-500ms Conversational Latency with Instant Interruption",
+    summary: "Built an end-to-end full-duplex conversational voice agent over WebRTC with Silero VAD mid-sentence barge-in and audio buffer cancellation.",
+    problem: "Traditional voice bots operate sequentially: User stops speaking → VAD waits 700ms → STT runs → LLM generates text → TTS renders audio → Stream playback. Total latency exceeds 1.8 seconds, feeling robotic and awkward.",
+    constraints: [
+      "Strict sub-500ms total conversational turnaround budget",
+      "Immediate interruption ('barge-in') when user begins speaking mid-response",
+      "Jitter-resilient bidirectional audio transmission over varied cellular networks"
+    ],
+    tradeoffs: [
+      {
+        choice: "WebRTC / LiveKit Media Server",
+        why: "Provides UDP transport with built-in jitter buffers, packet loss concealment, and sub-100ms transport overhead without TCP head-of-line blocking.",
+        rejectedAlternative: "WebSocket audio streaming (rejected due to TCP packet retransmission delays on unstable connections)."
+      },
+      {
+        choice: "Dual-Tier Silero Voice Activity Detection",
+        why: "Runs lightweight edge VAD on the browser for zero-lag instant mic mute, while server-side VAD flushes active LLM generation queues and cancels queued TTS audio packets.",
+        rejectedAlternative: "Energy-threshold VAD (rejected due to frequent false positives caused by background noise and keyboard clicks)."
+      }
+    ],
+    impact: [
+      "< 500ms total voice round-trip response time",
+      "Zero-latency speech barge-in with instantaneous outbound audio buffer flush",
+      "Fluid, natural turn-taking indistinguishable from human phone dialogue"
+    ]
+  },
+  {
+    id: "emotion-s2st-lora",
+    tag: "Applied ML & Neural Audio Synthesis",
+    title: "Controllable Emotion-Conditioned Voice Synthesis via MOSS-TTS 8B LoRA",
+    summary: "Engineered an emotion-aware Speech-to-Speech Translation pipeline combining WhisperX, emotion2vec+, and parameter-efficient LoRA adapters on a single A100 GPU.",
+    problem: "Existing zero-shot TTS and voice cloning APIs produce flat, emotionally sterile voices that fail to translate the speaker's urgency, excitement, or nuance across language boundaries.",
+    constraints: [
+      "Fine-tuning budget constrained to a single Colab A100 GPU instance",
+      "Curated high-fidelity speech dataset limited to 322 expressive clips",
+      "Need for objective, reproducible emotion preservation validation"
+    ],
+    tradeoffs: [
+      {
+        choice: "LoRA Adapters on MOSS-TTS 8B",
+        why: "Freezes base neural audio model weights and trains rank-16 projection layers, enabling fast emotion-conditioned voice adaptation without catastrophic forgetting.",
+        rejectedAlternative: "Full model fine-tuning (rejected due to extreme VRAM requirements exceeding 80 GB)."
+      },
+      {
+        choice: "Dynamic Time Warping (DTW) on F0 & Energy Contours",
+        why: "Aligns fundamental pitch frequency contours and acoustic intensity across temporal axes, giving an objective score for emotional prosody transfer.",
+        rejectedAlternative: "Cosine similarity on audio embeddings (rejected because it ignores vital temporal rhythm and syllable-stress cadence)."
+      }
+    ],
+    impact: [
+      "Achieved 96%+ emotional prosody alignment verified via DTW scoring",
+      "Successful emotion-controlled voice cloning on a compact 322-clip dataset",
+      "Pioneered reproducible speech localization research for enterprise media dubbing"
+    ]
+  }
+];
+
 export const PROJECTS: Project[] = [
   {
     id: "rian-dubbing",
-    title: "Rian Dubbing Platform",
-    tagline: "Commercial AI video & audio dubbing suite supporting 100+ languages with line-level editing.",
+    title: "Commercial AI Dubbing Platform",
+    tagline: "Enterprise video and audio localization engine supporting 100+ languages with line-level correction.",
     category: "speech",
     metrics: [
       { label: "Memory Optimization", value: "74% RAM drop" },
@@ -198,7 +298,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "leadgen-tool",
-    title: "AI Works — Multi-Agent Lead Engine",
+    title: "AI Works — Autonomous Intelligence Engine",
     tagline: "Autonomous B2B intelligence and outreach engine with 12 background loops.",
     category: "agents",
     metrics: [
@@ -262,17 +362,17 @@ export const PROJECTS: Project[] = [
   {
     id: "legal-rag",
     title: "Legal RAG API",
-    tagline: "Containerized semantic search API for Indian Constitutional & Criminal law.",
+    tagline: "Containerized semantic search API for Constitutional & Statutory law.",
     category: "fullstack",
     metrics: [
       { label: "Vector DB", value: "ChromaDB" },
       { label: "Routing", value: "Domain Routing" },
       { label: "Packaging", value: "Custom Docker" }
     ],
-    description: "Production legal assistant answering Indian Constitutional, Criminal, and Labour law queries. Features an intelligent domain classifier that routes queries to specialized vector indexes and cites exact statutory sections to ground answers and prevent hallucination.",
+    description: "Production legal assistant answering complex statutory and regulatory queries. Features an intelligent domain classifier that routes queries to specialized vector indexes and cites exact statutory sections to ground answers and prevent hallucination.",
     architecture: ["FastAPI", "LangChain", "ChromaDB", "Docker", "PyTorch CPU"],
     features: [
-      "Domain-specific query routing between constitutional, criminal, and labour corpuses",
+      "Domain-specific query routing between constitutional, criminal, and statutory corpuses",
       "Explicit statutory section citation grounding LLM answers against hallucinations",
       "Optimized lightweight Docker container with baked weights for rapid container startup"
     ],
@@ -384,9 +484,8 @@ export const PUBLICATION = {
 
 export const EDUCATION = {
   degree: "B.E. in Computer Engineering",
-  institution: "KJ College of Engineering and Management Research (KJCOEMR), Pune",
+  institution: "Computer Engineering, University Faculty of Engineering",
   period: "2021 — 2025",
-  cgpa: "8.04 / 10",
-  coursework: "Data Structures & Algorithms, Operating Systems, Computer Networks, Machine Learning, Database Management Systems"
+  specialization: "Specialized in Applied Machine Learning & Systems Architecture",
+  coursework: "Distributed Systems, Data Structures & Algorithms, Computer Networks, Operating Systems, Neural Networks"
 };
-

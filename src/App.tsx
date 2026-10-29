@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { MetricsRibbon } from './components/MetricsRibbon';
 import { ProjectsSection } from './components/ProjectsSection';
+import { CaseStudiesSection } from './components/CaseStudiesSection';
 import { S2STPipelineLab } from './components/S2STPipelineLab';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { SkillsMatrix } from './components/SkillsMatrix';
@@ -18,6 +19,7 @@ export const App: React.FC = () => {
         <Hero />
         <MetricsRibbon />
         <ProjectsSection />
+        <CaseStudiesSection />
         <S2STPipelineLab />
         <ExperienceTimeline />
         <SkillsMatrix />

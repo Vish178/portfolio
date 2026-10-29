@@ -1,5 +1,5 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, GraduationCap, CheckCircle2, Award } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, GraduationCap, CheckCircle2, Terminal } from 'lucide-react';
 import { EXPERIENCE, EDUCATION } from '../data/portfolioData';
 
 export const ExperienceTimeline: React.FC = () => {
@@ -11,13 +11,13 @@ export const ExperienceTimeline: React.FC = () => {
         <div className="mb-12">
           <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-1.5">
             <Briefcase className="w-4 h-4" />
-            <span>Track Record & Trajectory</span>
+            <span>Engineering Track Record</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Work Experience & Education
+            Work Experience & Background
           </h2>
           <p className="mt-2 text-sm sm:text-base text-slate-400 max-w-xl">
-            Engineering real-world systems, conducting production R&D, and maintaining academic excellence.
+            Designing resilient architectures, eliminating production bottlenecks, and deploying commercial ML systems.
           </p>
         </div>
 
@@ -80,35 +80,35 @@ export const ExperienceTimeline: React.FC = () => {
             ))}
           </div>
 
-          {/* Right Column: Education & Academic Performance (4 cols) */}
+          {/* Right Column: Education & Systems Focus (4 cols) */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <div className="glass-panel rounded-2xl p-6 sm:p-7 border border-white/10 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-3">
                   <GraduationCap className="w-4 h-4" />
-                  <span>Academic Degree</span>
+                  <span>Academic Engineering Degree</span>
                 </div>
 
                 <h3 className="text-lg font-bold text-white">
                   {EDUCATION.degree}
                 </h3>
                 <p className="text-xs font-mono text-slate-400 mt-1 leading-relaxed">
-                  {EDUCATION.institution}
+                  {EDUCATION.institution} · {EDUCATION.period}
                 </p>
 
-                <div className="my-5 p-4 rounded-xl bg-carbon-900 border border-white/10 flex items-center justify-between">
+                <div className="my-5 p-4 rounded-xl bg-carbon-900 border border-white/10 flex flex-col gap-1.5">
                   <div className="flex items-center gap-2">
-                    <Award className="w-5 h-5 text-amber-400" />
-                    <span className="text-xs font-mono text-slate-400">Graduation CGPA</span>
+                    <Terminal className="w-4 h-4 text-cyan-400" />
+                    <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">Engineering Focus</span>
                   </div>
-                  <span className="text-lg font-bold font-mono text-cyan-300">
-                    {EDUCATION.cgpa}
+                  <span className="text-xs font-mono text-cyan-300 leading-relaxed">
+                    {EDUCATION.specialization}
                   </span>
                 </div>
 
                 <div className="space-y-2 text-xs text-slate-400">
                   <div className="text-[11px] font-mono uppercase text-slate-500 tracking-wider">
-                    Core Engineering Foundations
+                    Core Coursework & Foundations
                   </div>
                   <p className="leading-relaxed font-sans text-slate-300">
                     {EDUCATION.coursework}
@@ -116,18 +116,19 @@ export const ExperienceTimeline: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-4 mt-6 border-t border-white/5 text-[11px] font-mono text-slate-500">
-                Duration: {EDUCATION.period}
+              <div className="pt-4 mt-6 border-t border-white/5 text-[11px] font-mono text-slate-500 flex items-center justify-between">
+                <span>Verified Credentials</span>
+                <span className="text-emerald-400">Accredited B.E.</span>
               </div>
             </div>
 
-            {/* Quick Stats Summary Card */}
+            {/* Systems Philosophy */}
             <div className="p-5 rounded-2xl bg-carbon-900/80 border border-white/5 font-mono text-xs text-slate-300 flex flex-col gap-2">
               <span className="text-cyan-400 font-bold uppercase tracking-wider text-[11px]">
                 Engineering Philosophy
               </span>
               <p className="text-slate-400 font-sans text-xs leading-relaxed">
-                "Measure real memory profiles, optimize streaming bottlenecks, eliminate unnecessary cloud API costs, and build for resilient uptime."
+                "Profile memory early, stream temporal chunks, minimize unnecessary cloud API round-trips, and validate speech outputs using objective mathematical metrics."
               </p>
             </div>
           </div>
@@ -138,4 +139,3 @@ export const ExperienceTimeline: React.FC = () => {
     </section>
   );
 };
-
