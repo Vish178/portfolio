@@ -389,3 +389,4 @@ export const EDUCATION = {
   cgpa: "8.04 / 10",
   coursework: "Data Structures & Algorithms, Operating Systems, Computer Networks, Machine Learning, Database Management Systems"
 };
+

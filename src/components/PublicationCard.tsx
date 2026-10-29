@@ -55,3 +55,4 @@ export const PublicationCard: React.FC = () => {
     </section>
   );
 };
+
