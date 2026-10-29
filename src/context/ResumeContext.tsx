@@ -28,3 +28,4 @@ export const useResumeGate = (): ResumeContextType => {
   }
   return context;
 };
+
