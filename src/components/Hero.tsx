@@ -1,9 +1,11 @@
 import React from 'react';
 import { ArrowDownRight, Terminal, ShieldCheck, MapPin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { useResumeGate } from '../context/ResumeContext';
 import { AudioWaveformVisualizer } from './AudioWaveformVisualizer';
 
 export const Hero: React.FC = () => {
+  const { openResumeModal } = useResumeGate();
   return (
     <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 bg-tech-grid">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -67,15 +69,13 @@ export const Hero: React.FC = () => {
                 <span>Architecture Case Studies</span>
               </a>
 
-              <a
-                href={PERSONAL_INFO.resumePdf}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                onClick={openResumeModal}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-canvas-900 hover:bg-canvas-850 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-mono text-xs transition-all"
               >
                 <Terminal className="w-3.5 h-3.5 text-slate-400" />
                 <span>Resume (PDF)</span>
-              </a>
+              </button>
             </div>
 
             {/* Production verified tag */}

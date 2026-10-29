@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { FileText, Menu, X } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { useResumeGate } from '../context/ResumeContext';
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { openResumeModal } = useResumeGate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,27 +95,23 @@ export const Navbar: React.FC = () => {
               </a>
             </div>
 
-            <a
-              href={PERSONAL_INFO.resumePdf}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              onClick={openResumeModal}
               className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/[0.08] border border-white/15 text-slate-100 hover:bg-white/[0.14] hover:border-white/30 text-xs font-mono font-medium transition-all"
             >
               <FileText className="w-3.5 h-3.5 text-slate-300" />
               <span>Resume</span>
-            </a>
+            </button>
           </div>
 
           {/* Mobile menu trigger */}
           <div className="flex md:hidden items-center gap-2">
-            <a
-              href={PERSONAL_INFO.resumePdf}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              onClick={openResumeModal}
               className="px-2.5 py-1 rounded bg-white/[0.08] border border-white/15 text-slate-100 text-xs font-mono font-medium"
             >
               Resume
-            </a>
+            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg bg-canvas-900 border border-white/[0.08] text-slate-300"

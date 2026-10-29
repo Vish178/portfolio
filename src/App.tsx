@@ -1,4 +1,6 @@
 import React from 'react';
+import { ResumeProvider } from './context/ResumeContext';
+import { ResumeGateModal } from './components/ResumeGateModal';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { MetricsRibbon } from './components/MetricsRibbon';
@@ -13,21 +15,24 @@ import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-carbon-950 text-slate-100 flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
-      <Navbar />
-      <main className="flex-grow">
-        <Hero />
-        <MetricsRibbon />
-        <ProjectsSection />
-        <CaseStudiesSection />
-        <S2STPipelineLab />
-        <ExperienceTimeline />
-        <SkillsMatrix />
-        <PublicationCard />
-        <ContactTerminal />
-      </main>
-      <Footer />
-    </div>
+    <ResumeProvider>
+      <div className="min-h-screen bg-canvas-950 text-slate-200 flex flex-col selection:bg-slate-700 selection:text-white">
+        <Navbar />
+        <main className="flex-grow">
+          <Hero />
+          <MetricsRibbon />
+          <ProjectsSection />
+          <CaseStudiesSection />
+          <S2STPipelineLab />
+          <ExperienceTimeline />
+          <SkillsMatrix />
+          <PublicationCard />
+          <ContactTerminal />
+        </main>
+        <Footer />
+        <ResumeGateModal />
+      </div>
+    </ResumeProvider>
   );
 };
 
