@@ -49,7 +49,7 @@ export const PERSONAL_INFO = {
   avatarUrl: "https://github.com/Vish178.png",
   github: "https://github.com/Vish178",
   linkedin: "https://www.linkedin.com/in/vishal-kaushal-ml/",
-  resumePdf: "/Vishal_Kaushal_Resume.pdf",
+  resumePdf: `${import.meta.env.BASE_URL}Vishal_Kaushal_Resume.pdf`,
 };
 
 export const CORE_METRICS: MetricItem[] = [
