@@ -6,51 +6,55 @@
   color-scheme: dark;
 }
 
-/* Custom dark scrollbar */
+body {
+  background-color: #090A0D;
+  color: #F1F5F9;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Restrained dark scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #06080C;
+  background: #090A0D;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1C2431;
-  border-radius: 4px;
+  background: #1B1F28;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2F3D55;
+  background: #252B37;
 }
 
-/* Studio grid pattern overlay */
-.bg-grid-pattern {
-  background-size: 32px 32px;
+/* Subtle architectural grid - very faint, non-distracting */
+.bg-tech-grid {
+  background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-.bg-dot-pattern {
-  background-size: 20px 20px;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+/* Surface panels: Quiet, structural, elegant */
+.panel-card {
+  background: #0E1015;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-/* Glass panel */
-.glass-panel {
-  background: rgba(16, 22, 34, 0.7);
-  backdrop-filter: blur(12px);
+.panel-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: #12151B;
+}
+
+.panel-card-elevated {
+  background: #14171E;
   border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-panel-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-panel-hover:hover {
-  background: rgba(22, 31, 46, 0.85);
-  border-color: rgba(0, 240, 255, 0.25);
-  box-shadow: 0 0 25px -8px rgba(0, 240, 255, 0.15);
 }

@@ -13,18 +13,18 @@ export const ProjectsSection: React.FC = () => {
     : PROJECTS.filter(p => p.category === activeFilter);
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative bg-grid-pattern">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative bg-tech-grid">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header & Filter Tabs */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-1.5">
-              <Layers className="w-4 h-4" />
-              <span>Engineered Systems & Products</span>
+            <div className="flex items-center gap-2 text-slate-400 font-mono text-xs uppercase tracking-widest mb-1.5">
+              <Layers className="w-3.5 h-3.5" />
+              <span>Production Codebases & Platforms</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Flagship Production Projects
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Production AI Systems
             </h2>
             <p className="mt-2 text-sm sm:text-base text-slate-400 max-w-xl">
               End-to-end applications designed, built, and deployed with real users, live traffic, and resilient cloud architectures.
@@ -32,7 +32,7 @@ export const ProjectsSection: React.FC = () => {
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-carbon-900/90 rounded-xl border border-white/10 font-mono text-xs self-start lg:self-auto">
+          <div className="flex flex-wrap items-center gap-1 p-1 bg-canvas-900 rounded-xl border border-white/[0.08] font-mono text-xs self-start lg:self-auto">
             {(
               [
                 { id: 'all', label: 'All Systems' },
@@ -44,10 +44,10 @@ export const ProjectsSection: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveFilter(tab.id)}
-                className={`px-3.5 py-1.5 rounded-lg transition-all ${
+                className={`px-3 py-1.5 rounded-lg transition-all ${
                   activeFilter === tab.id
-                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm font-semibold'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-white/10 text-white font-medium border border-white/20'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -61,14 +61,12 @@ export const ProjectsSection: React.FC = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className={`glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between relative group ${
-                project.featured ? 'border-cyan-500/20 shadow-glow-cyan' : ''
-              }`}
+              className="panel-card rounded-xl p-6 flex flex-col justify-between relative group"
             >
               <div>
                 {/* Header Tag & Links */}
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-carbon-800 text-cyan-300 border border-white/5 uppercase tracking-wider">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-canvas-850 text-slate-300 border border-white/[0.08] uppercase tracking-wider">
                     {project.category}
                   </span>
 
@@ -78,7 +76,7 @@ export const ProjectsSection: React.FC = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+                        className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-white/[0.06] transition-all"
                         title="GitHub Repository"
                       >
                         <GithubIcon className="w-4 h-4" />
@@ -89,7 +87,7 @@ export const ProjectsSection: React.FC = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-1.5 rounded-md text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all flex items-center gap-1 text-xs font-mono font-medium"
+                        className="p-1.5 rounded text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all flex items-center gap-1 text-xs font-mono"
                         title="Live Platform"
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
@@ -100,10 +98,10 @@ export const ProjectsSection: React.FC = () => {
                 </div>
 
                 {/* Title & Tagline */}
-                <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                <h3 className="text-lg font-bold text-white group-hover:text-slate-100 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-300 mt-2 line-clamp-2">
+                <p className="text-xs sm:text-sm text-slate-400 mt-2 line-clamp-2 leading-relaxed">
                   {project.tagline}
                 </p>
 
@@ -112,10 +110,10 @@ export const ProjectsSection: React.FC = () => {
                   {project.metrics.slice(0, 2).map((m, idx) => (
                     <div
                       key={idx}
-                      className="p-2 rounded-lg bg-carbon-900/90 border border-white/5 flex flex-col"
+                      className="p-2.5 rounded-lg bg-canvas-950 border border-white/[0.06] flex flex-col"
                     >
-                      <span className="text-[10px] text-slate-500 uppercase font-mono">{m.label}</span>
-                      <span className="text-xs font-bold font-mono text-cyan-300 mt-0.5">{m.value}</span>
+                      <span className="text-[10px] text-slate-400 uppercase font-mono">{m.label}</span>
+                      <span className="text-xs font-semibold font-mono text-slate-200 mt-0.5">{m.value}</span>
                     </div>
                   ))}
                 </div>
@@ -124,7 +122,7 @@ export const ProjectsSection: React.FC = () => {
                 <ul className="space-y-2 mb-5">
                   {project.features.slice(0, 2).map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-xs text-slate-400 leading-relaxed">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-slate-500 flex-shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -137,13 +135,13 @@ export const ProjectsSection: React.FC = () => {
                   {project.architecture.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 text-[11px] font-mono rounded bg-carbon-850 text-slate-300 border border-white/5"
+                      className="px-2 py-0.5 text-[11px] font-mono rounded bg-canvas-950 text-slate-400 border border-white/[0.06]"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.architecture.length > 4 && (
-                    <span className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-carbon-850 text-slate-500">
+                    <span className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-canvas-950 text-slate-500">
                       +{project.architecture.length - 4}
                     </span>
                   )}
@@ -151,7 +149,7 @@ export const ProjectsSection: React.FC = () => {
 
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-carbon-850 hover:bg-carbon-800 border border-white/10 hover:border-cyan-400/40 text-xs font-mono text-slate-300 hover:text-cyan-300 transition-all"
+                  className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-canvas-850 hover:bg-canvas-800 border border-white/[0.08] hover:border-white/20 text-xs font-mono text-slate-300 hover:text-white transition-all"
                 >
                   <span>System Architecture Spec</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -165,45 +163,45 @@ export const ProjectsSection: React.FC = () => {
 
       {/* Deep-Dive Spec Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-carbon-950/80 backdrop-blur-md">
-          <div className="glass-panel w-full max-w-2xl rounded-2xl border border-white/15 p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-canvas-950/85 backdrop-blur-md">
+          <div className="panel-card-elevated w-full max-w-2xl rounded-2xl p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 p-2 rounded-lg bg-carbon-850 border border-white/10 text-slate-400 hover:text-white"
+              className="absolute top-4 right-4 p-2 rounded-lg bg-canvas-850 border border-white/[0.08] text-slate-400 hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="flex items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-mono uppercase">
+              <span className="px-2.5 py-0.5 rounded bg-canvas-850 text-slate-300 border border-white/[0.08] text-xs font-mono uppercase">
                 {selectedProject.category}
               </span>
               {selectedProject.liveUrl && (
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-mono">
+                <span className="px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono">
                   Production Live
                 </span>
               )}
             </div>
 
             <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
-            <p className="text-sm text-cyan-300 font-mono mb-4">{selectedProject.tagline}</p>
+            <p className="text-sm text-slate-400 font-mono mb-4">{selectedProject.tagline}</p>
 
-            <div className="border-t border-white/10 pt-4 mb-4">
+            <div className="border-t border-white/[0.08] pt-4 mb-4">
               <h4 className="text-xs uppercase font-mono text-slate-400 tracking-wider mb-2">System Overview</h4>
-              <p className="text-sm text-slate-300 leading-relaxed">{selectedProject.description}</p>
+              <p className="text-sm text-slate-300 leading-relaxed font-sans">{selectedProject.description}</p>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-5">
               {selectedProject.metrics.map((m, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-carbon-900 border border-white/5">
-                  <div className="text-[10px] uppercase font-mono text-slate-500">{m.label}</div>
-                  <div className="text-sm font-bold font-mono text-cyan-300 mt-0.5">{m.value}</div>
+                <div key={idx} className="p-3 rounded-lg bg-canvas-950 border border-white/[0.06]">
+                  <div className="text-[10px] uppercase font-mono text-slate-400">{m.label}</div>
+                  <div className="text-sm font-semibold font-mono text-white mt-0.5">{m.value}</div>
                 </div>
               ))}
             </div>
 
             <div className="mb-5">
-              <h4 className="text-xs uppercase font-mono text-slate-400 tracking-wider mb-2">Key Engineering Capabilities</h4>
+              <h4 className="text-xs uppercase font-mono text-slate-400 tracking-wider mb-2">Engineering Capabilities</h4>
               <ul className="space-y-2">
                 {selectedProject.features.map((f, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-xs text-slate-300">
@@ -218,20 +216,20 @@ export const ProjectsSection: React.FC = () => {
               <h4 className="text-xs uppercase font-mono text-slate-400 tracking-wider mb-2">Technology Stack</h4>
               <div className="flex flex-wrap gap-2">
                 {selectedProject.architecture.map((tech) => (
-                  <span key={tech} className="px-2.5 py-1 text-xs font-mono rounded-lg bg-carbon-850 text-cyan-200 border border-white/10">
+                  <span key={tech} className="px-2.5 py-1 text-xs font-mono rounded bg-canvas-850 text-slate-300 border border-white/[0.08]">
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+            <div className="flex items-center gap-3 pt-4 border-t border-white/[0.08]">
               {selectedProject.liveUrl && (
                 <a
                   href={selectedProject.liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs shadow-glow-emerald"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-canvas-950 font-bold text-xs"
                 >
                   <span>Launch Live Platform</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -242,7 +240,7 @@ export const ProjectsSection: React.FC = () => {
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-carbon-850 border border-white/10 text-white hover:border-white/20 text-xs font-mono"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-canvas-850 border border-white/[0.08] text-white hover:border-white/20 text-xs font-mono"
                 >
                   <GithubIcon className="w-4 h-4" />
                   <span>Inspect Source</span>

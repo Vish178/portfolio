@@ -13,20 +13,20 @@ const iconMap: Record<string, LucideIcon> = {
 
 export const MetricsRibbon: React.FC = () => {
   return (
-    <section id="metrics" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-y border-white/5 bg-carbon-900/40">
+    <section id="metrics" className="py-14 sm:py-16 px-4 sm:px-6 lg:px-8 border-y border-white/[0.08] bg-canvas-900/60">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+            <div className="flex items-center gap-2 text-slate-400 font-mono text-xs uppercase tracking-widest mb-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
               <span>Production Telemetry & Impact</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Engineered for Production Scale
+              Production Scalability & Memory Benchmarks
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono text-slate-400 max-w-md">
-            Real performance benchmarks and storage optimizations derived from live commercial deployments.
+            Measured resource footprints and architectural optimizations verified on AWS deployments.
           </p>
         </div>
 
@@ -37,22 +37,22 @@ export const MetricsRibbon: React.FC = () => {
             return (
               <div
                 key={metric.id}
-                className="glass-panel glass-panel-hover p-4 sm:p-5 rounded-2xl flex flex-col justify-between group"
+                className="panel-card p-5 rounded-xl flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
                       {metric.label}
                     </span>
-                    <div className="p-2 rounded-lg bg-carbon-850 border border-white/5 text-cyan-400 group-hover:text-emerald-400 group-hover:border-emerald-400/30 transition-all">
-                      <Icon className="w-4 h-4" />
+                    <div className="p-1.5 rounded bg-canvas-850 border border-white/[0.08] text-slate-400">
+                      <Icon className="w-3.5 h-3.5" />
                     </div>
                   </div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white font-mono tracking-tight group-hover:text-cyan-300 transition-colors">
+                  <div className="text-xl sm:text-2xl font-bold text-white font-mono tracking-tight">
                     {metric.value}
                   </div>
                 </div>
-                <div className="mt-3 pt-3 border-t border-white/5 text-xs text-slate-400 leading-relaxed font-sans">
+                <div className="mt-3.5 pt-3 border-t border-white/[0.06] text-xs text-slate-400 leading-relaxed font-sans">
                   {metric.subtext}
                 </div>
               </div>
